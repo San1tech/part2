@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    top: 0%;
+    box-sizing: border-box;
+    font-family: montserrat;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    font-family: montserrat;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.Signin {
+    position: relative;
+    height: 400px;
+    width: 420px;
+    background: rgb(250, 213, 5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.Signin::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, #f30909, #f30909);
+    animation: animate 6s linear infinite;
+    transform-origin: bottom right;
+}
+
+.Signin::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 350px;
+    height: 450px;
+    background: linear-gradient(0deg, #f30909, #f30909);
+    animation: animate 6s linear infinite;
+    transform-origin: bottom right;
+    animation-delay: -3s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.form {
+    position: absolute;
+    inset: 2px;
+    border-radius: 8px;
+    background: #e7e0e0;
+    z-index: 10;
+}
+
+.Signin h2 {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.Signin form {
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .txt_field {
+    position: relative;
+    border-bottom: 2px solid #969696;
+    margin: 30px 0;
+    font-size: medium;
+}
+
+.txt_field input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.txt_field label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #ac0505;
+    transform: translateY(-50%);
+    font-size: 10px;
+    pointer-events: none;
+    font-size: large;
+}
+
+.txt_field span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #a7a7a7;
+}
+
+.txt_field input:focus~label,
+.txt_field input:valid~label {
+    top: -5px;
+    color: #820ce2;
+}
+
+.txt_field input:focus~span::before,
+.txt_field input:valid~span::before {
+    width: 100%;
+}
+
+.pass {
+    margin: -5px 0 20px 5px;
+    color: black;
+    cursor: pointer;
+}
+
+.pass:hover {
+    text-decoration: underline;
+}
+
+#btn {
+    position: relative;
+    margin-left: 25%;
+    padding: 8px;
+    border: 1px solid;
+    background-color: red;
+    border-radius: 25px;
+    font-size: 15px;
+    color: white;
+    width: 40%;
+    cursor: pointer;
+}
+
+#btn:hover {
+    border-color: black;
+}

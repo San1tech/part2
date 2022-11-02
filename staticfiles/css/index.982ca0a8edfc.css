@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.main-navbar .top-navbar{
+  background-color: #4c6fa8;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.main-navbar .top-navbar .nav-link{
+  color: rgb(52, 255, 144);
+  font-size: 25px;
+  font-weight: 700;
+}
+.top{
+  color:black !important;
+  font-size: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0px 1px 0px rgb(129, 129, 164),
+              0px 2px 0px  rgb(129, 129, 164),
+              0px 3px 0px  rgb(129, 129, 164),
+              0px 4px 0px  rgb(129, 129, 164),
+              0px 5px 0px  rgb(129, 129, 164);
+}
+#home{
+  background:url("./backt.95ba4f6c9f18.jpg");
+  filter: contrast(90%); 
+  height: 70vh;
+  background-size:cover;
+  background-position: center;
+}
+#home h1{
+  font-size: 100px;
+  color: blue !important;
+  text-align:center;
+  font-family: serif;
+  letter-spacing: 3px;
+  text-shadow: 0px 1px 0px rgb(117, 117, 227),
+              0px 2px 0px  rgb(117, 117, 227),
+              0px 3px 0px  rgb(117, 117, 227),
+              0px 4px 0px  rgb(117, 117, 227),
+              0px 5px 0px  rgb(117, 117, 227);
+}
+#home p{
+  text-align: center;
+  font-size: 50px;
+  color:red;
+  font-weight: 900;
+}
+#product h1{
+  font-size: 70px;
+  letter-spacing: 2px;
+  font-weight: 750;
+  font-family: cursive;
+  color:darkblue;
+}
+#cart{
+  padding: 5px;
+  border-radius: 5px;
+  padding-bottom:5px ;
+}
+#product img{
+  width:350px;
+  height:300px;
+}
+.card h5,h6{
+  font-size: 28px;
+  letter-spacing: 1px;
+  font-family:Arial, Helvetica, sans-serif
+}
+.price{
+  font-size:20px;
+  font-family: serif;
+}
+.card{
+  width:400px;
+  height: 450px;
+  background:#e5e5e5 !important;
+  border:none !important;
+  box-shadow: 10px 10px 00px rgba(0, 0,0,.3),
+              inset 2px 2px 6px white;
+  border-radius: 20px !important;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 60px;
+  transition: .3s;
+}
+.card:hover{
+  box-shadow: inset 5px 5px 10px rgba(0, 0,0,.3),
+              inset -4px -4px 10px white;
+  transition: .2s;
+}
+#contact_us h1{
+  font-size: 50px;
+  color:darkorange;
+}
+#contact_us{
+  background-color: antiquewhite;
+  font-family: cursive;
+}
+#footer{
+  background-color: black;
+  color: white;
+  text-align: center;
+}

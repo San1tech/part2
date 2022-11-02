@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>nammaooruspecial</title>
+    <link rel="icon" type="image/png" href="./static/images/Newlogo.png">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+    <div class="main-navbar shadow-sm sticky-top">
+        <div class="top-navbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-4 col-4">
+                        <a href="#">
+                            <img class="logo" src="./static/images/Newlogo.png" height="120">
+                        </a> <!-- brand end.// -->
+                    </div>
+                    <div class="col-md-4 my-auto">
+                        <form action="{% url 'ecomapp:search' %}" method="GET">
+                            <div class="input-group">
+                                <input type="search" name="keyword" placeholder="Search your product" class="form-control" required >
+                                <button class="btn bg-white" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6 my-auto">
+                        <ul class="nav justify-content-end">
+                            <li>
+                                <a class="nav-link" href="{%url 'ecomapp:home'%}">
+                                    <i class="fa fa-home"></i> Home
+                                </a>
+                            </li>
+
+                            <li>
+                                {% if request.user.customer %}
+                                WELCOME {{request.user.username}}!
+                                <a href="{% url 'ecomapp:customerprofile' %}">My Profile</a>
+                                <a href="{% url 'ecomapp:customerlogout' %}">Logout</a>
+                                {% else %}
+                                <a class="nav-link" href="{% url 'ecomapp:customerregistration' %}">
+                                    <i class="fa fa-user"></i> Register
+                                </a>
+                                
+                            <li>
+                                <a class="nav-link" href="{% url 'ecomapp:customerlogin'%}">
+                                    <i class="fa fa-user"></i> Login
+                                </a>
+                            </li>
+                            {% endif %}
+                            <li>
+                                <a class="nav-link" href="{%url 'ecomapp:allproducts'%}">
+                                    <i class="fa fa-list-alt"></i> Categories
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{%url 'ecomapp:mycart'%}">
+                                    <i class="fa fa-shopping-cart"></i> Cart 
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="home">
+        <h1>WELCOME</h1><br>
+        <p class="top">TO </p><br>
+        <p class="top"> NAMMA OORU SPECIAL</p><br><br>
+        <p>Available only in Bangalore</p>
+    </section>
+    <section id="product">
+        <div class="container m-5">
+            <h1 class="text-center my-5">OUR PRODUCTS</h1>
+        </div>
+    </section>
+    <div class="row">
+        {% for p in product_list %}
+        <div class="col-lg-4 col-md-4 col-12">
+            <div class="card">
+                <img src="{{p.image.url}}" alt="image loading" class="card-img-top">
+            <div class="card-body text-center">
+                <h3 style="color:black"><b><a href="{% url 'ecomapp:productdetail' p.slug %}"> {{p.title}}</b></a></h3>
+                <p class="price">Price: <strike>&#x20B9; {{p.marked_price}}</strike>&nbsp; &nbsp; &#x20B9; {{p.selling_price}}</p>
+                <p style="color:red">QTY:{{p.view_count}}</p>
+                <a href="{%url 'ecomapp:addtocart' p.id%}" class="btn btn-primary" id="cart">ADD TO CART</a>
+            </div>
+            </div>
+        </div>
+        {% endfor %} 
+    </div>
+    <br>
+    <p class="fs-1">
+        <ul class="pagination justify-content-center">
+          {% if product_list.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ product_list.previous_page_number }}" ><b> Previous</b></a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"></b>Previous</b></a>
+          </li>
+          {% endif %}
+
+          {% for i in product_list.paginator.page_range %}
+          {% if i == product_list.number %}
+          <li class="page-item active"><a class="page-link"><b>{{i}}</b></a></li>
+          {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{i}}"><b>{{i}}</b></a></li>
+          {% endif %}
+          {% endfor %}
+
+          {% if product_list.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ product_list.next_page_number }}"><b>Next</b></a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><b>Next</b></a>
+          </li>
+          {% endif %}
+        </ul>
+    </p>
+    
+    <section id="contact_us">
+        <div class="container m-5">
+            <h1>Contact Us</h1>
+            <hr>
+            <div class="row">
+                <p>Namma Ooru Special</p><br>
+                <p>Bangalore</p><br>
+                <p class="fa fa-mobile">&nbsp;9363675383</p><br>
+                <p class="fa fa-envelope">&nbsp;helpnammaooruspecial@gmail.com</p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer section -->
+    <section id="footer">
+        <p>	&#169;All rights reserved Namma ooru special</p>
+    </section>
+
+
+
+
+
+</body>
+
+
+</html>
