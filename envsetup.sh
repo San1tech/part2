@@ -7,7 +7,7 @@ else
     sudo apt install python3.8 venv env
 fi
 
-source env/bin/activate
+source Scripts/activate
 
 
 pip3 install -r requirements.txt
